@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">{{ config.get('app.name') }}</a> 
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('home') }}">Home</a>
+            </li>
+            {% if auth.check %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                </li>
+            {% endif %}
+        </ul>
+        <ul class="navbar-nav">
+            {% if auth.check %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ auth.user.name }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">Sign out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('auth.login') }}" >Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('auth.register') }}">Create an account</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<form action="{{ route('auth.logout') }}" method="POST" style="display: none;" id="logout">
+    <input type="hidden" name="{{ csrf.key }}" value="{{ csrf.token }}">
+</form>

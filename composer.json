@@ -1,0 +1,19 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "require": {
+        "vlucas/phpdotenv": "^2.4",
+        "league/route": "^3.0",
+        "zendframework/zend-diactoros": "^1.7",
+        "twig/twig": "^2.4",
+        "symfony/var-dumper": "^4.0",
+        "doctrine/orm": "^2.6",
+        "vlucas/valitron": "^1.4"
+    }
+}
